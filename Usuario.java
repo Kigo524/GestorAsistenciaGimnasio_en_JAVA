@@ -9,5 +9,11 @@ public class Usuario extends Persona{
         this.asistenciasSeguidas = 0; //para comenzar la suscripcion
     }
 
-    
+    public void registrarAsistencia(){
+        this.asistenciasSeguidas++;
+        System.out.println("Asistencia registrada: " + getNombre());
+    }
+
+    public Membresia getMembresia() {return membresia;}
+    public int getAsistenciasSeguidas() {return asistenciasSeguidas;}
 }
