@@ -20,4 +20,7 @@ public class Membresia {
     }
 
     public LocalDate getFechaVencimiento() {return fechaVencimiento; }
+    public double getPrecio() {return precio;}
+    public String getTipo() {return tipo;}
+    public boolean getPagada() {return pagada;}
 }
