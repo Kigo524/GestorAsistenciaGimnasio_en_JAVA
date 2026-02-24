@@ -1,5 +1,23 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args){
+        Scanner teclado = new Scanner(System.in);
+
+        //1 creo al jefe
+        Gerente jefe = new Gerente("Admin", "00000X", "admin@email.com", "admin123", "passwordSeguro");
+
+        System.out.println("=== BIENVENIDO AL SISTEMA DE GESTION ===");
+        System.out.println("Usuario: ");
+        String userIngresado = teclado.nextLine();
+        System.out.println("Contraseña: ");
+        String passIngresado = teclado.nextLine();
+
+        //se intenta un login
+        if (jefe.autenticar(userIngresado, passIngresado)) {
+            System.out.println("\nAcceso concedido. Hola, " + jefe.getNombre());
+
+            //esto es el gimnasio en general
         System.out.println("--- Sistema de Gimnasio KIGOCODE GYM - Prueba");
 
         //primero crear una membresia, será mensual, de 500 pesos y dira un mes
@@ -27,5 +45,14 @@ public class Main {
         System.out.println("-------------");
         System.out.println("Nuevo precio para el próximo pago: $" + juan.getMembresia().getPrecio());
         System.out.println("Asistencias actuales (reset): " + juan.getAsistenciasSeguidas());
+
+        //ahora el reporte de ventas del jefe
+        jefe.generarReporteDeVentas(5000.0); //como ejemplo de uso
+        }
+        else{
+            System.out.println("\nERROR: Credenciales incorrectas. Acceso denegado");
+        }
+
+        teclado.close();
     }
 }
