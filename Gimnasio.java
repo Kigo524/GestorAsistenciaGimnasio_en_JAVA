@@ -32,5 +32,10 @@ public class Gimnasio {
         return null; //si es que no lo encuentra
     }
 
-    
+    //para inscribir a alguien y cobrarle el mismo dia
+    public void registrarNuevoUsuario(Usuario u){
+        listaUsuarios.add(u);
+        totalVentas += u.getMembresia().getPrecio();
+        System.out.println("Socio " + u.getNombre()+ " registrado con éxito.");
+    }
 }

@@ -2,57 +2,31 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-        Scanner teclado = new Scanner(System.in);
 
-        //1 creo al jefe
-        Gerente jefe = new Gerente("Admin", "00000X", "admin@email.com", "admin123", "passwordSeguro");
+        //todo lo demás se delega al Gimnasio
 
-        System.out.println("=== BIENVENIDO AL SISTEMA DE GESTION ===");
-        System.out.println("Usuario: ");
-        String userIngresado = teclado.nextLine();
-        System.out.println("Contraseña: ");
-        String passIngresado = teclado.nextLine();
+        //se crea un admin y un gimnasio
+        Gerente admin = new Gerente("Raul", "123", "raul@gym.com", "admin", "1234");
+        Gimnasio miGimnasio = new Gimnasio("Gimnasio Mr México", admin);
 
-        //se intenta un login
-        if (jefe.autenticar(userIngresado, passIngresado)) {
-            System.out.println("\nAcceso concedido. Hola, " + jefe.getNombre());
+        //se crea un par de usuario con diferentes membresias
+        Membresia m1 = new Membresia("Mensual", 500.0, 1);
+        Usuario u1 = new Usuario("Ana Lopez", "4455", "ana@gmail.com", m1);
 
-            //esto es el gimnasio en general
-        System.out.println("--- Sistema de Gimnasio KIGOCODE GYM - Prueba");
+        Membresia m2 = new Membresia("Anual", 4500.0, 12);
+        Usuario u2 = new Usuario("Pedro Pascal", "6677", "pedro@gmail.com", m2);
 
-        //primero crear una membresia, será mensual, de 500 pesos y dira un mes
-        Membresia membresiaJuan = new Membresia("Mensual", 500.0, 1);
+        //se registran en el gimnasio los usuarios
+        miGimnasio.registrarNuevoUsuario(u1);
+        miGimnasio.registrarNuevoUsuario(u2);
 
-        //ahora un usuario que tenga esa membresia
-        Usuario juan = new Usuario("Juan Perez", "12345678", "juan@email.com", membresiaJuan);
+        //que imprima la lista de los usuarios y el reporte en general
+        miGimnasio.mostrarReporteEstado();
 
-        //Primero mostramos la ficha del usuario
-        System.out.println("Socio: " + juan.getNombre());
-        System.out.println("Vencimiento: " + juan.getMembresia().getFechaVencimiento());
-        System.out.println("Precio inicial: $" + juan.getMembresia().getPrecio());
-        System.out.println("--------------------------");
-
-        //aqui simulo 20 asistencias 
-        System.out.println("Registrando 20 dias de entrenmanieto...");
-        for (int i = 1; i<= 20; i++){
-            juan.registrarAsistencia();
+        //simular una búsqueda
+        Usuario encontrado = miGimnasio.buscUsuario("6677");
+        if(encontrado != null){ //si lo encuentra, que lo regrese
+            System.out.println("Usuario encontrado: " + encontrado.getNombre());
         }
-
-        //verifico si es que se ganó el premio por constancia
-        juan.verificarPremio(); //está en usuario
-
-        //para el resultado final
-        System.out.println("-------------");
-        System.out.println("Nuevo precio para el próximo pago: $" + juan.getMembresia().getPrecio());
-        System.out.println("Asistencias actuales (reset): " + juan.getAsistenciasSeguidas());
-
-        //ahora el reporte de ventas del jefe
-        jefe.generarReporteDeVentas(5000.0); //como ejemplo de uso
-        }
-        else{
-            System.out.println("\nERROR: Credenciales incorrectas. Acceso denegado");
-        }
-
-        teclado.close();
     }
 }
