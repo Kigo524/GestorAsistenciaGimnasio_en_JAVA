@@ -1,4 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
 
 public class Gimnasio {
     
@@ -37,5 +39,9 @@ public class Gimnasio {
         listaUsuarios.add(u);
         totalVentas += u.getMembresia().getPrecio();
         System.out.println("Socio " + u.getNombre()+ " registrado con éxito.");
+    }
+
+    public LocalDate membresiaPorVencer(LocalDate fechaVencimiento, LocalDate fechaActual){
+        membresiaPorVencer.between(LocalDate fechaActual, LocalDate fechaVencimiento);
     }
 }
