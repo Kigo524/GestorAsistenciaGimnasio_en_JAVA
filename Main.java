@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args){
 
@@ -7,7 +5,7 @@ public class Main {
 
         //se crea un admin y un gimnasio
         Gerente admin = new Gerente("Raul", "123", "raul@gym.com", "admin", "1234");
-        Gimnasio miGimnasio = new Gimnasio("Gimnasio Mr México", admin);
+        Gimnasio miGimnasio = new Gimnasio("Gimnasio *Mr México*", admin);
 
         //se crea un par de usuario con diferentes membresias
         Membresia m1 = new Membresia("Mensual", 500.0, 1);

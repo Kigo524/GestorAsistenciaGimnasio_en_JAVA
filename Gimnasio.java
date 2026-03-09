@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -8,6 +9,10 @@ public class Gimnasio {
     private ArrayList <Usuario> listaUsuarios;
     private double totalVentas;
     private Gerente gerente;
+
+    //aqui defino el horario de venta (para mi, de 8 a 22 horas)
+    private final LocalTime HORA_APRETURA = LocalTime.of(8, 0);
+    private final LocalTime HORA_CIERRE = LocalTime.of(22, 0);
 
     public Gimnasio(String nombre, Gerente gerente){
         this.nombre = nombre;
@@ -35,10 +40,21 @@ public class Gimnasio {
     }
 
     //para inscribir a alguien y cobrarle el mismo dia
+    //aqui también van las variables de apretura y cierre
     public void registrarNuevoUsuario(Usuario u){
-        listaUsuarios.add(u);
-        totalVentas += u.getMembresia().getPrecio();
-        System.out.println("Socio " + u.getNombre()+ " registrado con éxito.");
+        //esto es para sacar el tiempo de ahora
+        LocalTime ahora = LocalTime.now();
+
+        //verificar si la hora actual está entre la apertura y el cierre
+        if(ahora.isAfter(HORA_APRETURA) && ahora.isBefore(HORA_CIERRE)){
+            listaUsuarios.add(u);
+            totalVentas += u.getMembresia().getPrecio();
+            System.out.println("[VENTA] Socio " + u.getNombre() + " registrado con éxito a las " + ahora);
+        } else{
+            System.out.println("[SISTEMA CERRADO] No se pueden realizar ventas fuera de horario.");
+            System.out.println("Horario de atención: " + HORA_APRETURA + " a " + HORA_CIERRE);
+            System.out.println("Hora actual: " + ahora);
+        }
     }
 
     //estos dos métodos seguidos son para enviar correos cuando se vaya a terminar la memebresia
