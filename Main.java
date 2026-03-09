@@ -24,7 +24,7 @@ public class Main {
         miGimnasio.mostrarReporteEstado();
 
         //simular una búsqueda
-        Usuario encontrado = miGimnasio.buscUsuario("6677");
+        Usuario encontrado = miGimnasio.buscarUsuario("6677");
         if(encontrado != null){ //si lo encuentra, que lo regrese
             System.out.println("Usuario encontrado: " + encontrado.getNombre());
         }
