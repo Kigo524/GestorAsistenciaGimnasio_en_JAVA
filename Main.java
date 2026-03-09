@@ -16,9 +16,14 @@ public class Main {
         Membresia m2 = new Membresia("Anual", 4500.0, 12);
         Usuario u2 = new Usuario("Pedro Pascal", "6677", "pedro@gmail.com", m2);
 
+        //aqui creo los usuarios de prueba (para probar el envio de correo) se crea con 0 meses (vence hoy mismo)
+        Membresia mExpirando = new Membresia("Prueba", 100.0, 0);
+        Usuario u3 = new Usuario("José Alerta", "9999", "jose@correo.com", mExpirando);
+
         //se registran en el gimnasio los usuarios
         miGimnasio.registrarNuevoUsuario(u1);
         miGimnasio.registrarNuevoUsuario(u2);
+        miGimnasio.registrarNuevoUsuario(u3);
 
         //que imprima la lista de los usuarios y el reporte en general
         miGimnasio.mostrarReporteEstado();
@@ -28,5 +33,9 @@ public class Main {
         if(encontrado != null){ //si lo encuentra, que lo regrese
             System.out.println("Usuario encontrado: " + encontrado.getNombre());
         }
+
+        //esto es para probar las alertas con lo que está en Gimnasio
+        System.out.println("\n--- Ejecutando proceso autpmático de alertas ---");
+        miGimnasio.revisarVencimiento();
     }
 }
