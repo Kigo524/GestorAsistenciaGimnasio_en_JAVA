@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -45,15 +46,18 @@ public class Gimnasio {
         //esto es para sacar el tiempo de ahora
         LocalTime ahora = LocalTime.now();
 
+        //definimos el formato en Horas:minutos:segundos
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+
         //verificar si la hora actual está entre la apertura y el cierre
         if(ahora.isAfter(HORA_APRETURA) && ahora.isBefore(HORA_CIERRE)){
             listaUsuarios.add(u);
             totalVentas += u.getMembresia().getPrecio();
-            System.out.println("[VENTA] Socio " + u.getNombre() + " registrado con éxito a las " + ahora);
+            System.out.println("[VENTA] Socio " + u.getNombre() + " registrado con éxito a las " + ahora.format(formato));
         } else{
             System.out.println("[SISTEMA CERRADO] No se pueden realizar ventas fuera de horario.");
             System.out.println("Horario de atención: " + HORA_APRETURA + " a " + HORA_CIERRE);
-            System.out.println("Hora actual: " + ahora);
+            System.out.println("Hora actual: " + ahora.format(formato));
         }
     }
 
