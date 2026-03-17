@@ -3,6 +3,8 @@ import java.sql.Connection;
 public class Main {
     public static void main(String[] args){
 
+        Conexion.conectar();
+
         //todo lo demás se delega al Gimnasio
 
         //se crea un admin y un gimnasio
