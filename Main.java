@@ -58,5 +58,12 @@ public class Main {
         //esto es para probar las alertas con lo que está en Gimnasio
         System.out.println("\n--- Ejecutando proceso autpmático de alertas ---");
         miGimnasio.revisarVencimiento();
+
+        //para la base de datos
+        //Crear el objeto que sabe guardar en la base de datos
+        UsuarioDAO uDao = new UsuarioDAO();
+
+        //INtentar guardar a uno de los usuarios que ya se crearon (ej. u1)
+        uDao.insertar(u1);
     }
 }

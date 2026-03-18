@@ -9,12 +9,18 @@ public class Usuario extends Persona{
 
     private int asistenciasSeguidas;
     private Membresia membresia; //para por si tiene o mas de una o para cuando cambie de memebresia
+    // agrego id para la base de datos
+    private int id;
 
     public Usuario(String nombre, String ine, String email, Membresia membresia){
         super(nombre, ine, email);//desde persona
         this.membresia = membresia;
         this.asistenciasSeguidas = 0; //para comenzar la suscripcion
     }
+
+    //setter y getter del id para la base de datos
+    public void setId(int id){this.id = id;}
+    public int getId(){return id;}
 
     /*Registrar una visita y verificar automaticamente si el usuario es acreedor 
     a un beneficio por su constancia */

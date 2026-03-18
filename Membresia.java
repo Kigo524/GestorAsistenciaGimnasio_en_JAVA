@@ -8,6 +8,8 @@ public class Membresia {
     private double precio;
     private LocalDate fechaVencimiento;
     private boolean pagada;
+    //para la id para la base de datos
+    private int id;
 
     public Membresia(String tipo, double precio, int mesesDuracion){
         this.tipo = tipo;
@@ -40,6 +42,9 @@ public class Membresia {
     public double getPrecio() {return precio;}
     public String getTipo() {return tipo;}
     public boolean isPagada() {return pagada;} //cambio de get a is por ser booleano
+    //getter y setter de el id para la base de datos
+    public void setId(int id){this.id = id;}
+    public int getId() {return id;}
 
     //setter para el pago
     public void setPagada(boolean pagada) {this.pagada = pagada;}
