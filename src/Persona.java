@@ -1,3 +1,4 @@
+package src;
 public abstract class Persona {
 
     private String nombre;

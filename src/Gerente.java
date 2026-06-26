@@ -1,3 +1,4 @@
+package src;
 public class Gerente extends Persona{
     private String username;
     private String password;

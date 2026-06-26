@@ -1,3 +1,4 @@
+package src;
 /*Representa a un socio activo del gimnasio
 Gestiona su membresia y su historial de fidelizacion por asistencia */
 

@@ -1,3 +1,4 @@
+package src;
 import java.time.LocalDate;
 
 /*Gestiona los detalles financieros y de vigencia de la suscripcion */
